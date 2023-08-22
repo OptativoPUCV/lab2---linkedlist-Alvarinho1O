@@ -111,3 +111,19 @@ list.c:41:8: note: declared here
 cc1: all warnings being treated as errors
 Compilation failed
 b100649
+Tue 22 Aug 2023 11:19:34 PM UTC: 
+ list.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+list.c: In function ‘firstList’:
+list.c:48:10: error: ‘newList’ undeclared (first use in this function); did you mean ‘nextList’?
+   48 |   return newList;
+      |          ^~~~~~~
+      |          nextList
+list.c:48:10: note: each undeclared identifier is reported only once for each function it appears in
+list.c:49:1: error: control reaches end of non-void function [-Werror=return-type]
+   49 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+6a00b71

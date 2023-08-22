@@ -45,7 +45,7 @@ void * firstList(List * list) {
     } else {
         fprintf(stderr, "Error: La lista está vacía.\n");
     }
-  return;
+  return newList;
 }
 
 void * nextList(List * list) {
