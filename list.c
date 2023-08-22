@@ -40,22 +40,22 @@ List * createList() {
 
 void * firstList(List * list) {
     if (list->head != NULL) {
-      list->current = list->head; 
-      printf("Dato del primer nodo: %p\n", list->current->data);
+        list->current = list->head; 
+        return &(list->current->data);
     } else {
         fprintf(stderr, "Error: La lista está vacía.\n");
+        return NULL;
     }
-  return nextList;
 }
 
 void * nextList(List * list) {
-    if (list->current != NULL && list->current->next != NULL) {
-      list->current = list->current->next;
-      printf("Dato del nodo siguiente: %p\n", list->current->data);
-    } else {
+  if (list->current != NULL && list->current->next != NULL) {
+      list->current = list->current->next; 
+      return &(list->current->data);
+    }else {
       fprintf(stderr, "Error: No hay nodo siguiente o el nodo actual no está configurado.\n");
+        return NULL;
     }
-    return nextList;
 }
 
 void * lastList(List * list) {
