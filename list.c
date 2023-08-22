@@ -45,6 +45,7 @@ void * firstList(List * list) {
     } else {
         fprintf(stderr, "Error: La lista está vacía.\n");
     }
+  return NULL;
 }
 
 void * nextList(List * list) {
@@ -54,6 +55,7 @@ void * nextList(List * list) {
     } else {
       fprintf(stderr, "Error: No hay nodo siguiente o el nodo actual no está configurado.\n");
     }
+  return NULL;
 }
 
 void * lastList(List * list) {
