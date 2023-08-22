@@ -145,3 +145,18 @@ Tue 22 Aug 2023 11:40:46 PM UTC:
  tests:  1|5
 total_score: 10/70
 e7fdf68
+Tue 22 Aug 2023 11:45:53 PM UTC: 
+ list.c | 28 ++++------------------------
+ 1 file changed, 4 insertions(+), 24 deletions(-)
+In file included from test.c:5:
+list.c: In function ‘lastList’:
+list.c:63:1: error: control reaches end of non-void function [-Werror=return-type]
+   63 | }
+      | ^
+list.c: In function ‘prevList’:
+list.c:67:1: error: control reaches end of non-void function [-Werror=return-type]
+   67 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+dc69829

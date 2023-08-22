@@ -39,51 +39,31 @@ List * createList() {
 }
 
 void * firstList(List * list) {
-    if (list->head != NULL) {
-        list->current = list->head;
-        return &(list->current->data);
-    } else {
-        fprintf(stderr, "Error: La lista está vacía.\n");
-        return NULL;
-    }
+  if (list->head != NULL) {
+    list->current = list->head;
+    return list->current->data;
+  }else {
+    fprintf(stderr, "Error: La lista está vacía.\n");
+    return NULL;
+  }
 }
 
 void * nextList(List * list) {
   if (list->current != NULL && list->current->next != NULL) {
-      list->current = list->current->next;
-      return &(list->current->data);
-  }else{
-      fprintf(stderr, "Error: No hay nodo siguiente o el nodo actual no está configurado.\n");
-      return NULL;
-    }
+    list->current = list->current->next;
+    return list->current->data;
+  }else {
+    fprintf(stderr, "Error: No hay nodo siguiente o el nodo actual no está configurado.\n");
+    return NULL;
+  }
 }
 
 void * lastList(List * list) {
-      if (list->head != NULL) {
-        Node* current = list->head;
-        while (current->next != NULL) {
-            current = current->next;
-        }
-        list->current = current; 
-        return &(list->current->data);
-    } else {
-        fprintf(stderr, "Error: La lista está vacía.\n");
-        return NULL;
-    }
+
 }
 
 void * prevList(List * list) {
-    if (list->head != NULL && list->current != NULL && list->current != list->head) {
-      Node* prevNode = list->head;
-      while (prevNode->next != list->current) {
-         prevNode = prevNode->next;
-      }
-      list->current = prevNode;
-      return &(list->current->data);
-    }else {
-      fprintf(stderr, "Error: No hay nodo anterior o el nodo actual no está configurado.\n");
-      return NULL;
-    }
+
 }
 
 void pushFront(List * list, void * data) {
