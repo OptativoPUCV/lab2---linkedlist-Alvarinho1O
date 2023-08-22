@@ -124,17 +124,64 @@ void pushCurrent(List * list, void * data) {
 }
 
 void * popFront(List * list) {
-    list->current = list->head;
-    return popCurrent(list);
+    if (list->head == NULL) {
+        fprintf(stderr, "Error: La lista está vacía.\n");
+        return NULL;
+    }
+    Node* oldHead = list->head;
+    void* data = oldHead->data;
+    list->head = oldHead->next;
+    if (list->head != NULL) {
+        list->head->prev = NULL;
+    } else {
+        list->tail = NULL;
+    }
+    free(oldHead);
+    return data;
 }
 
 void * popBack(List * list) {
-    list->current = list->tail;
-    return popCurrent(list);
+    if (list->tail == NULL) {
+        fprintf(stderr, "Error: La lista está vacía.\n");
+        return NULL;
+    }
+    Node* oldTail = list->tail;
+    void* data = oldTail->data;
+    list->tail = oldTail->prev;
+    if (list->tail != NULL) {
+        list->tail->next = NULL;
+    } else {
+        list->head = NULL;
+    }
+    free(oldTail);
+    return data;
 }
 
 void * popCurrent(List * list) {
-    return NULL;
+    if (list->current == NULL) {
+        fprintf(stderr, "Error: El nodo actual no está configurado.\n");
+        return NULL;
+    }
+    Node* currentNode = list->current;
+    void* data = currentNode->data;
+
+    if (currentNode->prev != NULL) {
+        currentNode->prev->next = currentNode->next;
+    } else {
+        list->head = currentNode->next;
+    }
+    if (currentNode->next != NULL) {
+        currentNode->next->prev = currentNode->prev;
+    } else {
+        list->tail = currentNode->prev;
+    }
+    if (currentNode->prev == NULL && currentNode->next == NULL) {
+        list->head = NULL;
+        list->tail = NULL;
+    }
+    list->current = currentNode->next;
+    free(currentNode);
+    return data;
 }
 
 void cleanList(List * list) {
