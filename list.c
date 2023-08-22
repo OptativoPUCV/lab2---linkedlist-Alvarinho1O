@@ -105,15 +105,22 @@ void pushBack(List * list, void * data) {
 }
 
 void pushCurrent(List * list, void * data) {
+    if (list->current == NULL) {
+        fprintf(stderr, "Error: El nodo actual no está configurado.\n");
+        return;
+    }
+
     Node* newNode = createNode(data);
-    if (list->tail == NULL) {
-        list->head = newNode;
-        list->tail = newNode;
+    newNode->next = list->current->next;
+    newNode->prev = list->current;
+    
+    if (list->current->next != NULL) {
+        list->current->next->prev = newNode;
     } else {
-        newNode->prev = list->tail;
-        list->tail->next = newNode;
         list->tail = newNode;
     }
+    
+    list->current->next = newNode;
 }
 
 void * popFront(List * list) {
