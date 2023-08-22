@@ -4,3 +4,32 @@ Tue 22 Aug 2023 10:28:15 PM UTC:
  tests:  1|5
 total_score: 10/70
 533773f
+Tue 22 Aug 2023 11:14:18 PM UTC: 
+ list.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+list.c: In function ‘firstList’:
+list.c:44:38: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘void *’ [-Werror=format=]
+   44 |       printf("Dato del primer nodo: %d\n", list->current->data);
+      |                                     ~^     ~~~~~~~~~~~~~~~~~~~
+      |                                      |                  |
+      |                                      int                void *
+      |                                     %p
+list.c: In function ‘nextList’:
+list.c:53:41: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘void *’ [-Werror=format=]
+   53 |       printf("Dato del nodo siguiente: %d\n", list->current->data);
+      |                                        ~^     ~~~~~~~~~~~~~~~~~~~
+      |                                         |                  |
+      |                                         int                void *
+      |                                        %p
+list.c: In function ‘firstList’:
+list.c:48:1: error: control reaches end of non-void function [-Werror=return-type]
+   48 | }
+      | ^
+list.c: In function ‘nextList’:
+list.c:57:1: error: control reaches end of non-void function [-Werror=return-type]
+   57 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+85c2beb
